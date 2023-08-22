@@ -18,22 +18,20 @@ def timecode_to_frames(timecode):
     return sum(f * int(t) for f,t in zip((3600*framerate, 60*framerate, framerate, 1), timecode.split(':')))
 
 def frames_to_timecode(frames):
-    timecode = '{0:02d}:{1:02d}:{2:02d}:{3:02d}'.format(frames / (3600*framerate),
-                                                        frames / (60*framerate) % 60,
-                                                        frames / framerate % 60,
-                                                        frames % framerate)
+    timecode = '{0:02d}:{1:02d}:{2:02d}:{3:02d}'.format(int(frames / (3600*framerate)),
+                                                        int(frames / (60*framerate) % 60),
+                                                        int(frames / framerate % 60),
+                                                        int(frames % framerate))
     return timecode
 
 
 ####################
 # params input
 ####################
-timecode_begin = '01:02:11:12' #hrs,min,sec,frm
-timecode_end   = '02:11:14:10'
+timecode_begin = '00:00:00:00' #hrs,min,sec,frm
+timecode_end   = '00:02:00:19'
 framerate = 24
 stepDuration = 10
-
-
 
 ####################
 # DR
